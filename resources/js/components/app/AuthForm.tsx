@@ -4,6 +4,8 @@ import Input from "@/components/inputs/Input";
 import Button from "@/components/Button";
 import AuthSocialButton from "@/components/app/AuthSocialButton";
 import { BsGoogle } from "react-icons/bs";
+import { router } from "@inertiajs/react";
+import toast from "react-hot-toast";
 
 type FormValues = {
   name: string;
@@ -31,8 +33,15 @@ const AuthForm = () => {
   const onSubmit = (data: FormValues) => {
     setIsLoading(true);
 
-    if (variant === 'REGISTER') {
-      // TODO: call the register action
+      if (variant === 'REGISTER') {
+      router.post('/register', data, {
+        onError: () => {
+          toast.error('Something went wrong');
+        },
+        onFinish: () => {
+          setIsLoading(false);
+        }
+      });
     } else {
       // TODO: call the login action
     }

@@ -1,5 +1,6 @@
 import { createInertiaApp } from '@inertiajs/react'
 import { createRoot } from 'react-dom/client'
+import { Toaster } from 'react-hot-toast'
 
 createInertiaApp({
   resolve: name => {
@@ -7,6 +8,11 @@ createInertiaApp({
     return pages[`./Pages/${name}.tsx`]
   },
   setup({ el, App, props }) {
-    createRoot(el).render(<App {...props} />)
+    createRoot(el).render(
+      <>
+        <Toaster />
+        <App {...props} />
+      </>
+    )
   },
 })
