@@ -43,7 +43,17 @@ const AuthForm = () => {
         }
       });
     } else {
-      // TODO: call the login action
+      router.post('/login', data, {
+        onSuccess: () => {
+          toast.success('Logged in!');
+        },
+        onError: () => {
+          toast.error('Something went wrong');
+        },
+        onFinish: () => {
+          setIsLoading(false);
+        }
+      });
     }
   };
 

@@ -4,7 +4,7 @@
 
 - Authentication
 
-  - Registeration
+  - Registeration, Login
 
 ## Tech Stack
 
