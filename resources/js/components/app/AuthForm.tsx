@@ -114,7 +114,7 @@ const AuthForm = () => {
           <div className="mt-6 flex gap-2">
             <AuthSocialButton
               icon={BsGoogle}
-              onClick={() => {}}
+              url="/auth/google/redirect"
             />
           </div>
         </div>

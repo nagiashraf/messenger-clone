@@ -4,7 +4,8 @@
 
 - Authentication
 
-  - Registeration, Login
+  - Registeration and Login
+  - Google Authentication
 
 ## Tech Stack
 
