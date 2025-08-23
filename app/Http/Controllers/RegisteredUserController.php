@@ -20,6 +20,6 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        redirect('/');
+        redirect('/users');
     }
 }
