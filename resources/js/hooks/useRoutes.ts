@@ -1,4 +1,4 @@
-import { usePage } from "@inertiajs/react";
+import { router, usePage } from "@inertiajs/react";
 import { HiChat } from "react-icons/hi";
 import { HiArrowLeftOnRectangle, HiUsers } from "react-icons/hi2";
 
@@ -22,9 +22,7 @@ const useRoutes = () => {
       label: 'Logout',
       href: '#',
       icon: HiArrowLeftOnRectangle,
-      onClick: () => {
-        // TODO: Add logout functionality
-      },
+      onClick: () => {router.post('/logout')},
     },
   ];
 

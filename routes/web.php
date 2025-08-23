@@ -21,5 +21,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/users', function () {
         return inertia('users/Index');
     })->name('users.index');
+
+    Route::post('/logout', [SessionController::class, 'destroy']);
 });
 
