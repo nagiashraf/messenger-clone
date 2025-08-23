@@ -2,10 +2,13 @@ import useRoutes from "@/hooks/useRoutes";
 import DesktopItem from "@/components/sidebar/DesktopItem";
 import Avatar from "@/components/Avatar";
 import { useState } from "react";
+import { PageProps, User } from "@/types";
+import { usePage } from "@inertiajs/react";
 
 const DesktopSidebar = () => {
   const routes = useRoutes();
   const [isOpen, setIsOpen] = useState(false);
+  const user = usePage<PageProps>().props.auth.user;
 
   return (
     <div className="hidden lg:fixed lg:inset-y-0 lg:left-0 lg:z-40 lg:w-20 xl:px-6 lg:overflow-y-auto lg:bg-white lg:border-r-[1px] lg:pb-4 lg:flex lg:flex-col justify-between">
@@ -28,7 +31,7 @@ const DesktopSidebar = () => {
           onClick={() => setIsOpen(true)}
           className="cursor-pointer hover:opacity-75 transition"
         >
-          <Avatar />
+          <Avatar user={user} />
         </div>
       </nav>
     </div>

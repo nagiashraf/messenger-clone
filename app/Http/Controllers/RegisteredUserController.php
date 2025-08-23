@@ -8,6 +8,18 @@ use Illuminate\Support\Facades\Auth;
 
 class RegisteredUserController extends Controller
 {
+    public function index()
+    {
+        $currentUser = Auth::user();
+
+        $users = User::select('id', 'name', 'email', 'image_url')
+            ->where('email', '!=', $currentUser->email)
+            ->latest()
+            ->get();
+
+        return inertia('users/Index', ['users' => $users]);
+    }
+
     public function store()
     {
         $validatedAttributes = request()->validate([

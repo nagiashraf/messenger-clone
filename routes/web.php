@@ -18,9 +18,8 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('/users', function () {
-        return inertia('users/Index');
-    })->name('users.index');
+    Route::get('/users', [RegisteredUserController::class, 'index'])
+        ->name('users.index');
 
     Route::post('/logout', [SessionController::class, 'destroy']);
 });

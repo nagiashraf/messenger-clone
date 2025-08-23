@@ -1,9 +1,10 @@
 import EmptyState from "@/components/EmptyState";
 import UsersLayout from "@/Pages/users/Layout";
+import { User } from "@/types";
 
-const Users = () => {
+const Users = ({ users }: { users: User[] }) => {
   return (
-    <UsersLayout>
+    <UsersLayout users={users}>
       <div className="hidden lg:block lg:pl-80 h-full">
         <EmptyState />
       </div>

@@ -1,10 +1,11 @@
-import { PageProps } from "@/types";
-import { usePage } from "@inertiajs/react";
+import { User } from "@/types";
 
-const Avatar = () => {
-  const user = usePage<PageProps>().props.auth.user;
+type AvatarProps = {
+  user: User;
+};
 
-  return (
+const Avatar = ({ user }: AvatarProps) => {
+    return (
     <div className="relative">
       <div className="relative inline-block rounded-full overflow-hidden h-9 w-9 md:h-11 md:w-11">
         <img
