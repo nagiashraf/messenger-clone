@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthProviderController;
+use App\Http\Controllers\ConversationController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
@@ -22,5 +23,15 @@ Route::middleware('auth')->group(function () {
         ->name('users.index');
 
     Route::post('/logout', [SessionController::class, 'destroy']);
-});
 
+    Route::get('/conversations', [ConversationController::class, 'index'])
+        ->name('conversations.index');
+
+    Route::get('/conversations/{id}', [ConversationController::class, 'show'])
+        ->name('conversations.show');
+
+    Route::post('/conversations', [ConversationController::class, 'store'])
+        ->name('conversations.store');
+
+    Route::get('/api/conversations', [ConversationController::class, 'all']);
+});

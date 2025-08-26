@@ -2,6 +2,10 @@
 
 ## Features
 
+- Conversations
+
+  - Create one-to-one conversations
+
 - Authentication
 
   - Registeration and Login

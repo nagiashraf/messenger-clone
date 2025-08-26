@@ -1,12 +1,25 @@
 import Avatar from "@/components/Avatar";
 import { User } from "@/types";
+import { router } from "@inertiajs/react";
+import { useState } from "react";
 
 type UserBoxProps = {
   data: User;
 }
 
 const UserBox = ({ data }: UserBoxProps) => {
-  const handleClick = () => {};
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleClick = () => {
+    setIsLoading(true);
+
+    router.post(
+      '/conversations',
+      { user_id: data.id },
+      { onFinish: () => setIsLoading(false) }
+    );
+  };
+
   return (
     <div
       onClick={handleClick}
