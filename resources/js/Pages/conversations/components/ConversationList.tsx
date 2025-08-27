@@ -3,6 +3,7 @@ import clsx from "clsx";
 import { useState } from "react";
 import { MdOutlineGroupAdd } from "react-icons/md";
 import ConversationBox from "@/Pages/conversations/components/ConversationBox";
+import useConversation from "@/hooks/useConversation";
 
 type ConversationListProps = {
   initialItems: Conversation[];
@@ -10,11 +11,13 @@ type ConversationListProps = {
 
 const ConversationList = ({ initialItems }: ConversationListProps) => {
   // const [items, setItems] = useState(initialItems);
+  const { isOpen, conversationId } = useConversation();
 
   return (
     <aside
       className={clsx(
         "fixed inset-y-0 pb-20 lg:pb-0 lg:left-20 lg:w-80 lg:block overflow-y-auto border-r border-gray-200",
+        isOpen ? 'hidden' : 'block w-full left-0'
       )}
     >
       <div className="px-5">
@@ -30,6 +33,7 @@ const ConversationList = ({ initialItems }: ConversationListProps) => {
           <ConversationBox
             key={conversation.id}
             data={conversation}
+            selected ={conversationId === conversation.id}
           />
         ))}
       </div>

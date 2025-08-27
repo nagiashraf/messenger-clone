@@ -1,16 +1,18 @@
 import { router, usePage } from "@inertiajs/react";
+import useConversation from "@/hooks/useConversation";
 import { HiChat } from "react-icons/hi";
 import { HiArrowLeftOnRectangle, HiUsers } from "react-icons/hi2";
 
 const useRoutes = () => {
   const { url } = usePage();
+  const { conversationId } = useConversation();
 
   const routes = [
     {
       label: 'Chats',
       href: '/conversations',
       icon: HiChat,
-      active: url === '/conversations',
+      active: url === '/conversations' || !!conversationId,
     },
     {
       label: 'Users',
