@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthProviderController;
 use App\Http\Controllers\ConversationController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
@@ -34,4 +35,7 @@ Route::middleware('auth')->group(function () {
         ->name('conversations.store');
 
     Route::get('/api/conversations', [ConversationController::class, 'all']);
+
+    Route::post('/messages', [MessageController::class, 'store'])
+        ->name('messages.store');
 });
