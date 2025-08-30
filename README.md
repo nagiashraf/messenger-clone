@@ -18,4 +18,5 @@
 - Inertia.js
 - React.js
 - Tailwind CSS
+- Headless UI
 - React-Hook-Form

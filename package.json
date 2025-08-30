@@ -21,6 +21,7 @@
         "vite": "^7.0.4"
     },
     "dependencies": {
+        "@headlessui/react": "^2.2.7",
         "@inertiajs/react": "^2.1.2",
         "clsx": "^2.1.1",
         "date-fns": "^4.1.0",
