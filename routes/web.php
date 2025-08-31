@@ -34,6 +34,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/conversations', [ConversationController::class, 'store'])
         ->name('conversations.store');
 
+    Route::delete('/conversations/{id}', [ConversationController::class, 'destroy'])
+        ->name('conversations.destroy');
+
     Route::get('/api/conversations', [ConversationController::class, 'all']);
 
     Route::post('/messages', [MessageController::class, 'store'])

@@ -5,6 +5,7 @@
 - Conversations
 
   - Create one-to-one conversations
+  - Delete conversations
 
 - Authentication
 

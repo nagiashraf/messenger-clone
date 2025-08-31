@@ -102,4 +102,11 @@ class ConversationController extends Controller
             }
         }
     }
+
+    public function destroy(int $id)
+    {
+        Conversation::findOrFail($id)->delete();
+
+        return redirect()->route('conversations.index');
+    }
 }
