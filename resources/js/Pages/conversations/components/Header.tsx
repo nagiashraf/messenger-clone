@@ -1,4 +1,5 @@
 import Avatar from "@/components/Avatar";
+import AvatarGroup from "@/components/AvatarGroup";
 import useOtherUser from "@/hooks/useOtherUser";
 import ProfileDrawer from "@/Pages/conversations/components/ProfileDrawer";
 import { Conversation } from "@/types";
@@ -33,7 +34,11 @@ const Header = ({ conversation }: HeaderProps) => {
           >
             <HiChevronLeft size={32} />
           </Link>
-          <Avatar user={otherUser} />
+          {conversation.is_group ? (
+            <AvatarGroup users={conversation.users!} />
+          ) : (
+            <Avatar user={otherUser} />
+          )}
           <div className="flex flex-col">
             <div>
               {conversation.name || otherUser.name}

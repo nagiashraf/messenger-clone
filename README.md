@@ -4,7 +4,7 @@
 
 - Conversations
 
-  - Create one-to-one conversations
+  - Create one-to-one and group conversations
   - Delete conversations
 
 - Authentication

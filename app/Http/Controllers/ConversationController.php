@@ -51,7 +51,7 @@ class ConversationController extends Controller
         $validator = Validator::make($request->all(), [
             'user_id' => ['required_without:is_group', 'required_if_declined:is_group'], // For one-to-one conversations
             'is_group' => ['nullable','boolean'],
-            'members' => ['required_if_accepted:is_group', 'array:value'], // For group conversations
+            'members' => ['required_if_accepted:is_group', 'array'], // For group conversations
             'name' => ['required_if_accepted:is_group', 'string'], // For group conversations
         ]);
 
@@ -73,9 +73,7 @@ class ConversationController extends Controller
             $memberIds = array_map(fn ($member) => $member['value'], $validatedAttributes['members']);
             $newConversation->users()->attach([$request->user()->id, ...$memberIds]);
 
-            return inertia('conversations/Show', [
-                'conversation' => $newConversation->with('users'),
-            ]);
+            return redirect()->route('conversations.show', $newConversation->id);
         } else {
             // Unlike groups, one-to-one conversations can only be created ONCE between two users
             $conversationId = DB::table('conversation_user')
@@ -89,16 +87,12 @@ class ConversationController extends Controller
                 ->first();
 
             if ($existingConversation) {
-                return inertia('conversations/Show', [
-                    'conversation' => $existingConversation->with('users'),
-                ]);
+                return redirect()->route('conversations.show', $existingConversation->id);
             } else {
                 $newConversation = Conversation::create(['is_group' => false]);
                 $newConversation->users()->attach([$request->user()->id, $validatedAttributes['user_id']]);
 
-                return inertia('conversations/Show', [
-                    'conversation' => $newConversation->with('users'),
-                ]);
+                return redirect()->route('conversations.show', $newConversation->id);
             }
         }
     }

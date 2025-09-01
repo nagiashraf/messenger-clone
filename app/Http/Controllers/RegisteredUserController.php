@@ -20,6 +20,12 @@ class RegisteredUserController extends Controller
         return inertia('users/Index', ['users' => $users]);
     }
 
+    public function all()
+    {
+        $users = User::where('id', '!=', auth()->id())->get();
+        return response()->json($users);
+    }
+
     public function store()
     {
         $validatedAttributes = request()->validate([

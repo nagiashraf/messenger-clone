@@ -1,4 +1,5 @@
 import Avatar from "@/components/Avatar";
+import AvatarGroup from "@/components/AvatarGroup";
 import useOtherUser from "@/hooks/useOtherUser";
 import { Conversation, PageProps } from "@/types";
 import { router, usePage } from "@inertiajs/react";
@@ -51,7 +52,11 @@ const ConversationBox = ({ data, selected }: ConversationBoxProps) => {
         selected ? "bg-neutral-100" : "bg-white"
       )}
     >
-      <Avatar user={otherUser} />
+      {data.is_group ? (
+        <AvatarGroup users={data.users!} />
+      ) : (
+        <Avatar user={otherUser} />
+      )}
       <div className="min-w-0 flex-1">
         <div className="focus:outline-none">
           <div className="flex justify-between items-center mb-1">

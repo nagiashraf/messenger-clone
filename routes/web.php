@@ -23,6 +23,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/users', [RegisteredUserController::class, 'index'])
         ->name('users.index');
 
+    Route::get('/api/users', [RegisteredUserController::class, 'all']);
+
     Route::post('/logout', [SessionController::class, 'destroy']);
 
     Route::get('/conversations', [ConversationController::class, 'index'])
