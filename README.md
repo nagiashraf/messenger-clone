@@ -7,6 +7,10 @@
   - Create one-to-one and group conversations
   - Delete conversations
 
+- Messages
+
+  - Send and receive real-time messages
+
 - Authentication
 
   - Registeration and Login

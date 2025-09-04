@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\MessageSent;
 use App\Models\Message;
 use App\Models\Conversation;
 use Illuminate\Http\Request;
@@ -28,6 +29,8 @@ class MessageController extends Controller
         $conversation = Conversation::with('users', 'messages.seenBy')->find($validated['conversation_id']);
         $conversation->last_message_at = now();
         $conversation->save();
+
+        MessageSent::dispatch($newMessage->load('conversation'));
 
         return redirect()->route('conversations.show', $conversation->id);
     }
